@@ -1,0 +1,24 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kongden-next-js-app-v2-yarn
+  labels:
+    app: kongden-next-js-app-v2-yarn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kongden-next-js-app-v2-yarn
+  template:
+    metadata:
+      labels:
+        app: kongden-next-js-app-v2-yarn
+    spec:
+      containers:
+        - name: kongden-next-js-app-v2-yarn
+          image: docker.io/phengbunath/kongden-next-js-app-v2-yarn:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
