@@ -1,0 +1,22 @@
+---
+# Source: helm for kubernetes/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "kongden-next-js-app-v2-yarn"
+  namespace: "argocd"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/BunathPheng/kongden-next-js-app-v2-yarn-manifests.git
+    targetRevision: HEAD
+    path: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: smartops-api
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
