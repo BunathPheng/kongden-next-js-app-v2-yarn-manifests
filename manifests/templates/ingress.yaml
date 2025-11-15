@@ -1,0 +1,21 @@
+---
+# Source: helm for kubernetes/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kongden-next-js-app-v2-yarn                  # Ingress name
+  labels:
+    app: kongden-next-js-app-v2-yarn
+spec:
+  ingressClassName: nginx   # Optional ingressClass
+  rules:
+    - host: "kongden-next-js-app-v2-yarn.smartops.space"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kongden-next-js-app-v2-yarn               # Links to Service name dynamically
+                port:
+                  number: 3000  # Links to service port dynamically
